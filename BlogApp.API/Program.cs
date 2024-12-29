@@ -1,5 +1,10 @@
 
+using BlogApp.BL.Services.Implemenets;
+using BlogApp.BL.Services.Implemenets.Profiles;
+using BlogApp.BL.Services.Interfaces;
 using BlogApp.DAL.Context;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogApp.API
@@ -20,6 +25,10 @@ namespace BlogApp.API
             {
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("local"));
             });
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+            builder.Services.AddScoped<ICategoryService,CategoryService>();
+            builder.Services.AddAutoMapper(typeof(CategoryProfile).Assembly);
 
             var app = builder.Build();
 
