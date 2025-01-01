@@ -1,8 +1,5 @@
-
-using BlogApp.BL.Services.Implemenets;
-using BlogApp.BL.Services.Implemenets.Profiles;
-using BlogApp.BL.Services.Interfaces;
 using BlogApp.DAL.Context;
+using BlogApp.DAL.Registration;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
@@ -25,10 +22,7 @@ namespace BlogApp.API
             {
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("local"));
             });
-            builder.Services.AddFluentValidationAutoValidation();
-            builder.Services.AddValidatorsFromAssemblyContaining<Program>();
-            builder.Services.AddScoped<ICategoryService,CategoryService>();
-            builder.Services.AddAutoMapper(typeof(CategoryProfile).Assembly);
+            builder.Services.AddRepositories();
 
             var app = builder.Build();
 
@@ -44,7 +38,7 @@ namespace BlogApp.API
             app.UseAuthorization();
 
 
-            app.MapControllers();
+             app.MapControllers();
 
             app.Run();
         }
