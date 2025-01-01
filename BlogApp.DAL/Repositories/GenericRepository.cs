@@ -20,7 +20,7 @@ namespace BlogApp.DAL.Repositories
             => Table.AsQueryable();
 
         public async Task<T> GetByIdAsync(int id)
-            => await Table.FindAsync(id);
+            => await Table.FirstOrDefaultAsync(x=>x.Id==id);
 
         public IQueryable<T> GetWhere(Func<T, bool> method)
             => Table.Where(method).AsQueryable();

@@ -1,3 +1,4 @@
+using BlogApp.BL.Registrations;
 using BlogApp.DAL.Context;
 using BlogApp.DAL.Registration;
 using FluentValidation;
@@ -23,6 +24,9 @@ namespace BlogApp.API
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("local"));
             });
             builder.Services.AddRepositories();
+            builder.Services.AddServices();
+            builder.Services.AddAutoMapper();
+            builder.Services.AddFluentValidation();
 
             var app = builder.Build();
 

@@ -13,9 +13,8 @@ namespace BlogApp.Core.Entities
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public bool IsFeMale { get; set; }
-        public DateOnly BirthDate { get; set; }
-        public int Role { get; set; }
+        public int Role { get; set; } = 1;
         public bool IsBanned { get; set; }
-        public DateTime? UnlockTime { get; set; }
+        public string? Image { get; set; }
     }
 }

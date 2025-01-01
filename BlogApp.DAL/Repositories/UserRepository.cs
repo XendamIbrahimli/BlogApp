@@ -20,7 +20,7 @@ namespace BlogApp.DAL.Repositories
         
         public async Task<User?> GetUserByUsernameAsync(string username)
         {
-            return await _context.Users.FindAsync(username);
+            return await _context.Users.FirstOrDefaultAsync(x=>x.Username==username);
             
         }
     }
