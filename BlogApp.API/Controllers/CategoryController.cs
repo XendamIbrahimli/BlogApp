@@ -1,5 +1,6 @@
 ﻿using BlogApp.Core.Entities;
 using BlogApp.Core.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace BlogApp.API.Controllers
     public class CategoryController(ICategoryRepository _repo) : ControllerBase
     {
         [HttpGet("GetAll")]
+        [Authorize]
         public async Task<IActionResult> Get()
         {
             return Ok(await _repo.GetAll().ToListAsync());

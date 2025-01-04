@@ -9,7 +9,7 @@ namespace BlogApp.BL.Services.Interfaces
 {
     public interface IAuthService
     {
-        Task<bool> LoginAsync(LoginDto dto);
+        Task<string> LoginAsync(LoginDto dto);
         Task RegisterAsync(RegisterDto dto);
     }
 }
