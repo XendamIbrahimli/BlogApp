@@ -66,6 +66,7 @@ namespace BlogApp.BL.Services.Implements
                     throw new ExistException("This Email already was used by another user");
             }
             await _repo.AddAsync(_mapper.Map<User>(dto));
+            
             await _repo.SaveAsync();
         }
     }
